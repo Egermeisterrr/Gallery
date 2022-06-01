@@ -1,5 +1,6 @@
 package com.example.gallery.adapter
 
+import android.content.ClipData
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +11,21 @@ import com.bumptech.glide.Glide
 import com.example.gallery.R
 import com.example.gallery.model.Image
 
-class MyAdapter (
+class MyAdapter(
     private val context: Context,
     private val dataset: List<Image>
 ) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
-    class MyViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.image)
+
+    class MyViewHolder(
+        private val view: View,
+        contextV: Context) : RecyclerView.ViewHolder(view) {
+        private val imageView: ImageView = view.findViewById(R.id.image)
+        private val context = contextV
 
         fun setImage(item: Image) {
-
+            Glide.with(context)
+                .load(item.imageResourceId)
+                .into(imageView)
         }
     }
 
@@ -26,7 +33,7 @@ class MyAdapter (
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.item, parent, false)
 
-        return MyViewHolder(adapterLayout)
+        return MyViewHolder(adapterLayout, context)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -36,14 +43,4 @@ class MyAdapter (
     override fun getItemCount(): Int {
         return dataset.size
     }
-
-    /*fun addImage(view: View) {
-        val uri = "https://img.labirint.ru/images/upl/descripts/pic_1477575042.jpg"
-
-        val imagePath : ImageView = findViewById(R.id.myImage)
-
-        Glide.with(this)
-            .load(uri)
-            .into(imagePath)
-    }*/
 }
