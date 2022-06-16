@@ -24,13 +24,13 @@ class AppController : Application() {
             return mRequestQueue!!
         }
 
-    fun <T> addToRequestQueue(req: Request<T>, tag: String?) {
-        req.tag = if (TextUtils.isEmpty(tag)) TAG else tag
+    fun <T> addToRequestQueue(req: Request<T>) {
+        req.tag = TAG
         requestQueue.add(req)
     }
 
-    fun <T> addToRequestQueue(req: Request<T>) {
-        req.tag = TAG
+    /*fun <T> addToRequestQueue(req: Request<T>, tag: String?) {
+        req.tag = if (TextUtils.isEmpty(tag)) TAG else tag
         requestQueue.add(req)
     }
 
@@ -38,7 +38,7 @@ class AppController : Application() {
         if (mRequestQueue != null) {
             mRequestQueue!!.cancelAll(tag)
         }
-    }
+    }*/
 
     companion object {
         val TAG = AppController::class.java

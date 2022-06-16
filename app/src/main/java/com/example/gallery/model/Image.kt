@@ -1,11 +1,10 @@
 package com.example.gallery.model
 
-// дописать логику всех функций!!!
-class Image() {
-    fun getMedium() {}
-    fun setName(s:String) {}
-    fun setSmall(s:String) {}
-    fun setMedium(s:String) {}
-    fun setLarge(s:String) {}
-    fun setTimestamp(s:String) {}
+
+class Image(mName: String, mTimestamp: String, mSmall: String, mMedium: String, mLarge: String) {
+    val name = mName
+    val timestamp = mTimestamp
+    val small = mSmall
+    val medium = mMedium
+    val large = mLarge
 }
