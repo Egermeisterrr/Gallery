@@ -13,6 +13,6 @@ tools:context=".MainActivity">
 
 </com.google.android.material.appbar.AppBarLayout>
 
-<include layout="@layout/content" />
+<include layout="@layout/item_face" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

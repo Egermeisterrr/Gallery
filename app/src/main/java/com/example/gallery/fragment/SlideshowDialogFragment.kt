@@ -82,7 +82,7 @@ class SlideshowDialogFragment : DialogFragment() {
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             layoutInflater = getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE)
             val view: View =
-                layoutInflater.inflate(R.layout.image_fullscreen_preview, container, false)
+                layoutInflater.inflate(R.layout.fragment_fullscreen, container, false)
             val imageViewPreview = view.findViewById<View>(R.id.image_preview) as ImageView
             val image: Image = images!![position]
             Glide.with(getActivity()).load(image.getLarge())
