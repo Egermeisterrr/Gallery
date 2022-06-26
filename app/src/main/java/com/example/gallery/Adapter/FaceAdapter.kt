@@ -16,7 +16,7 @@ import com.example.gallery.R
 
 class FaceAdapter(
     private val context: Context,
-    private var mMovieInfoList: List<MovieInfo>
+    private var mMovieInfoList: List<MovieInfo?>?
 ) : RecyclerView.Adapter<FaceAdapter.FaceViewHolder>(),
     View.OnClickListener,
     OnLongClickListener {
@@ -36,7 +36,7 @@ class FaceAdapter(
         holder.itemView.tag = position
         holder.itemView.setOnClickListener(this)
         Glide.with(context)
-            .load(mMovieInfoList[position].url?.medium)
+            .load(mMovieInfoList?.get(position)?.url?.medium)
             .centerCrop()
             //.animate(R.anim.anim_zoom)
             .thumbnail(0.1f)
@@ -44,7 +44,7 @@ class FaceAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mMovieInfoList.size
+        return mMovieInfoList?.size!!
     }
 
     override fun onClick(v: View) {
@@ -60,8 +60,8 @@ class FaceAdapter(
         mListener = listener
     }
 
-    fun setMovieInfoList(movieInfoList: List<MovieInfo>) {
+    fun setMovieInfoList(movieInfoList: ArrayList<MovieInfo?>?) {
         mMovieInfoList = movieInfoList
-        notifyItemRangeInserted(0, movieInfoList.size)
+        notifyItemRangeInserted(0, movieInfoList!!.size)
     }
 }
